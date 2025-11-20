@@ -1,6 +1,7 @@
 import express from "express";
 const app = express();
 import authRoutes from "./routes/authRoutes.js";
+import noteRoutes from "./routes/noteRoutes.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import connectDB from "./config/db.js";    
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/auth" , authRoutes);
-app.use("/api/auth" , authRoutes);
+app.use("/api/auth" , noteRoutes);
 
 
 
