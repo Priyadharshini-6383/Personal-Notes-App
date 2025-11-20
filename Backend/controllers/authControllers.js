@@ -1,10 +1,10 @@
 import User from "../models/User.js";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 
 export const register = async (req , res) => {
-    const {user , email , password} = req.body;
+    const {name , email , password} = req.body;
 
     try {
     const user = await User.findOne({email});
@@ -13,7 +13,7 @@ export const register = async (req , res) => {
     }
 
     const hassedPassword = await bcrypt.hash(password , 10);
-    const newUser = new User({user , email, password : hassedPassword});
+    const newUser = new User({name , email, password : hassedPassword});
     await newUser.save();
 
     } catch (error) {
