@@ -3,6 +3,19 @@ import express from "express";
 import Note from "../models/Notes.js";
 
 
+export const getNotes = async (req , res) =>{
+   const {user , title, content} = req.body;
+
+   try {
+      const note = await Note.find();
+res.status(201).json({note})
+   }
+   catch (error) {
+      console.error("Error Found" , error.message);
+   }
+}
+
+
 export const createNote = async (req , res) =>{
      const {title , content , user} = req.body;
 

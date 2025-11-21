@@ -1,9 +1,10 @@
 import express from "express";
 const router = express.Router();
 
-import { createNote } from "../controllers/notesControllers.js";
+import { createNote , getNotes} from "../controllers/notesControllers.js";
 
 router.post("/create" , createNote);
+router.get("/get" , getNotes);
 
 
 
