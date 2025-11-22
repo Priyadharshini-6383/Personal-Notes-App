@@ -16,7 +16,7 @@ res.status(201).json({note})
 }
 
 
-export const createNote = async (req , res) =>{
+export const createNotes = async (req , res) =>{
      const {title , content , user} = req.body;
 
      try {
@@ -29,7 +29,7 @@ export const createNote = async (req , res) =>{
      }
 }
 
-export const updateNote = async (req,res) => {
+export const updateNotes = async (req,res) => {
    const {title , content } = req.body;
 
    try {
