@@ -28,3 +28,21 @@ export const createNote = async (req , res) =>{
         console.error("Error Found" , error.message);
      }
 }
+
+export const updateNote = async (req,res) => {
+   const {title , content } = req.body;
+
+   try {
+      const note = await Note.findById(req.params.id);
+      if(!note) {
+         return res.status(404).json({message : "Note not found"});
+      }
+      note.title = title;
+      note.content = content;
+      
+      await note.save();
+      res.status(200).json({note});
+   } catch (error) {
+      console.error("Error Found" , error.message);
+   }
+}
