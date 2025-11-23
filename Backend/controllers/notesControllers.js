@@ -44,3 +44,22 @@ export const updateNotes = async (req,res) => {
       console.error("Error Found" , error.message);
    }
 }
+
+export const deleteNotes = async (req ,res) => {
+   
+
+   try {
+      const note = await Note.findById(req.params.id );
+
+      if (!note) {
+         return res.status(404).json({message: "Note not found"});   
+      }
+
+      await note.deleteOne();
+
+      res.status(200).json({message : "Note Deleted Successfully"}); 
+   }
+   catch (error) {
+      console.error("Error Found" , error.message);
+   }
+}
