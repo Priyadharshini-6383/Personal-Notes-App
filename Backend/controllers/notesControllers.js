@@ -17,10 +17,10 @@ res.status(201).json({note})
 
 
 export const createNotes = async (req , res) =>{
-     const {title , content , user} = req.body;
+     const {title , content } = req.body;
 
      try {
-        const note = new Note({title , content , user});
+        const note = new Note({title , content , user : req.user.id});
         await note.save();
         res.status(201).json("Note Created Successfully");
      }
@@ -37,7 +37,7 @@ export const updateNotes = async (req,res) => {
       if(!note) {
          return res.status(404).json({message : "Note not found"});
       }
-      await note.save();
+      
       
       res.status(200).json({message : "Note Updated Successfully" });
    } catch (error) {
