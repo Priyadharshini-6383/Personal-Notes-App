@@ -33,15 +33,13 @@ export const updateNotes = async (req,res) => {
    const {title , content } = req.body;
 
    try {
-      const note = await Note.findById(req.params.id);
+      const note = await Note.findByIdAndUpdate(req.params.id, {title , content} );
       if(!note) {
          return res.status(404).json({message : "Note not found"});
       }
-      note.title = title;
-      note.content = content;
-      
       await note.save();
-      res.status(200).json({note});
+      
+      res.status(200).json({message : "Note Updated Successfully" });
    } catch (error) {
       console.error("Error Found" , error.message);
    }

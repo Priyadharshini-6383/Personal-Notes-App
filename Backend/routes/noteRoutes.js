@@ -5,7 +5,7 @@ import { createNotes , getNotes , updateNotes} from "../controllers/notesControl
 
 router.post("/create" , createNotes);
 router.get("/get" , getNotes);
-router.put("/update" , updateNotes)
+router.put("/update/:id" , updateNotes)
 
 
 
